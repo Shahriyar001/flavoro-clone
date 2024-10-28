@@ -1,3 +1,4 @@
+import Cart from "../../../components/Cart";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
 import FoodItem from "../FoodItem/FoodItem";
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <CategoryMenu />
       <FoodItem />
+      <Cart />
     </div>
   );
 };
