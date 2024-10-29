@@ -2,14 +2,17 @@ import { IoMdClose } from "react-icons/io";
 import ItemCard from "./ItemCard";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
-import { RiH1 } from "react-icons/ri";
 
 const Cart = () => {
   const [activeCart, setActiveCart] = useState(true);
+
   const cartItems = useSelector((state) => state.cart.cart);
-  console.log("cartItems", cartItems);
+  const totalQty = cartItems.reduce((totalQty, item) => totalQty + item.qty, 0);
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.qty * item.price,
+    0
+  );
   return (
     <>
       <div
@@ -37,8 +40,10 @@ const Cart = () => {
         )}
 
         <div className="absolute bottom-0">
-          <h3 className="font-semibold text-gray-800">Items: </h3>
-          <h3 className="font-semibold text-gray-800">Total Amount: </h3>
+          <h3 className="font-semibold text-gray-800">Items: {totalQty}</h3>
+          <h3 className="font-semibold text-gray-800">
+            Total Amount:$ {totalPrice}
+          </h3>
           <hr className="w-[90vw] lg:w-[280px] my-2" />
           <button className="bg-green-500 font-bold px-3 text-white py-2 rounded md:w-[420px] lg:w-[280px] w-[90vw] my-2">
             Checkout
@@ -47,15 +52,10 @@ const Cart = () => {
       </div>
       <FaShoppingCart
         onClick={() => setActiveCart(!activeCart)}
-        className="rounded-full bg-white text-gray-800 shadow-md text-5xl p-3 fixed bottom-10 right-4 hover:scale-150"
+        className={`rounded-full bg-white text-gray-800 shadow-md text-5xl p-3 fixed bottom-10 right-4 hover:scale-150 ${
+          totalQty > 0 && "animate-bounce delay-500  transition-all"
+        }`}
       />
-      {/* <FaShoppingCart
-        className="rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 transform transition-transform hover:scale-150"
-        style={{
-          animation: "blip 1s infinite",
-          transformOrigin: "center",
-        }}
-      /> */}
     </>
   );
 };
