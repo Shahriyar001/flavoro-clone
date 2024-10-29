@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
+import { RiH1 } from "react-icons/ri";
 
 const Cart = () => {
   const [activeCart, setActiveCart] = useState(true);
@@ -25,9 +26,15 @@ const Cart = () => {
           />
         </div>
 
-        {cartItems.map((food) => {
-          return <ItemCard key={food.id} food={food} />;
-        })}
+        {cartItems.length > 0 ? (
+          cartItems.map((food) => {
+            return <ItemCard key={food.id} food={food} />;
+          })
+        ) : (
+          <h2 className="text-center text-xl font-bold text-gray-800">
+            Cart is empty
+          </h2>
+        )}
 
         <div className="absolute bottom-0">
           <h3 className="font-semibold text-gray-800">Items: </h3>

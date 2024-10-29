@@ -37,7 +37,7 @@ const FoodCard = ({ food }) => {
               })
             );
           }}
-          className="p-1  bg-green hover:text-white hover:bg-green-600 rounded-lg text-sm"
+          className="p-1  bg-green text-white hover:bg-green-600 bg-green-500 rounded-lg text-sm"
         >
           Add to cart
         </button>
