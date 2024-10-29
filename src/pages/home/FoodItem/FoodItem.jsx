@@ -9,7 +9,6 @@ const FoodItem = () => {
       .then((response) => response.json())
       .then((data) => setFoodItems(data));
   }, []);
-  console.log(foodItems);
 
   return (
     <div className="ml-5 my-10 flex flex-wrap gap-10 justify-center lg:justify-start">
