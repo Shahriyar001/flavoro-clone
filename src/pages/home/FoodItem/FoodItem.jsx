@@ -7,7 +7,8 @@ const FoodItem = () => {
   const [foodItems, setFoodItems] = useState([]);
 
   const category = useSelector((state) => state.category.category);
-
+  const search = useSelector((state) => state.search.search);
+  console.log(search);
   useEffect(() => {
     fetch("../../../../public/FoodItems.json")
       // fetch("FoodItems.json")
