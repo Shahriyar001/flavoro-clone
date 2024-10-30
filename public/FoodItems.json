@@ -14,7 +14,7 @@
     "name": "Margherita Pizza",
     "price": 130,
     "desc": "A classic Italian pizza topped with fresh tomatoes, mozzarella cheese, basil leaves, and a drizzle of olive oil. Simple yet bursting with flavors, this Margherita Pizza is a timeless favorite that captures the essence of Italian cuisine.",
-    "category": "Lunch",
+    "category": "Dinner",
     "rating": 4.2
   },
   {
@@ -23,7 +23,7 @@
     "name": "Pepperoni Pizza",
     "price": 160,
     "desc": "Indulge in the savory delight of this Pepperoni Pizza, loaded with slices of spicy pepperoni, melted cheese, and a tangy tomato sauce. A popular choice that's perfect for satisfying your pizza cravings.",
-    "category": "Lunch",
+    "category": "Dinner",
     "rating": 4.6
   },
   {
@@ -59,7 +59,7 @@
     "name": "Egg and Bacon Croissant",
     "price": 110,
     "desc": "Indulge in a buttery croissant filled with scrambled eggs, crispy bacon, and melted cheese. A savory and satisfying breakfast option that's perfect for on-the-go mornings.",
-    "category": "Breakfast",
+    "category": "Snacks",
     "rating": 4.2
   },
   {
@@ -86,7 +86,7 @@
     "name": "Fruit and Nut Oatmeal",
     "price": 85,
     "desc": "Warm up with a bowl of hearty oatmeal packed with mixed fruits, nuts, and a drizzle of honey. A wholesome breakfast that provides a satisfying start to your day.",
-    "category": "Breakfast",
+    "category": "Snacks",
     "rating": 4.5
   }
 ]

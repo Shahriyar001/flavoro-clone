@@ -1,25 +1,53 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../../../redux/slices/CategorySlice";
 
 const CategoryMenu = () => {
+  const [categories, setCategories] = useState([]);
+
+  const [FoodData, setFoodData] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    fetch("../../../../public/FoodItems.json")
+      // fetch("FoodItems.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setFoodData(data);
+        listUniqueCategories(data);
+      });
+  }, []);
+
+  const listUniqueCategories = (FoodData) => {
+    const uniqueCategories = [
+      ...new Set(FoodData.map((food) => food.category)),
+    ];
+    setCategories(uniqueCategories);
+    console.log(uniqueCategories);
+  };
+
+  const selectedCategory = useSelector((state) => state.category.category);
+
   return (
     <div className="ml-5 ">
       <h3 className="text-xl font-semibold">Find the best food</h3>
       <div className="my-5 flex gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden">
-        <button className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white">
+        <button
+          onClick={() => dispatch(setCategory("All"))}
+          className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white"
+        >
           All
         </button>
-        <button className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white">
-          Lunch
-        </button>
-        <button className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white">
-          BrackFast
-        </button>
-        <button className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white">
-          Dinner
-        </button>
-        <button className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white">
-          Snacks
-        </button>
+        {categories?.map((category, index) => {
+          return (
+            <button
+              onClick={() => dispatch(setCategory(category))}
+              key={index}
+              className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white"
+            >
+              {category}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

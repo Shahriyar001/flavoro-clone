@@ -33,7 +33,7 @@ const ItemCard = ({ food }) => {
             <span>{qty}</span>
             <AiOutlinePlus
               onClick={() =>
-                qty > 1 ? dispatch(increment({ id })) : (qty = 0)
+                qty >= 1 ? dispatch(increment({ id })) : (qty = 0)
               }
               className="border-2 border-gray-600 text-gray-600 hover:text-gray-500 hover:border-none rounded-md p-1 text-xl transition-all ease' cursor-pointer"
             />
