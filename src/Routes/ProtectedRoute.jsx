@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ element }) => {
+const ProtectedRoute = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.cart);
-  return cartItems.length > 0 ? element : <Navigate to="/" />;
+  return cartItems.length > 0 ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

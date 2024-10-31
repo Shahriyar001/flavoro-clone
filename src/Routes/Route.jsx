@@ -4,6 +4,7 @@ import Home from "../pages/home/home/Home";
 import Contact from "../pages/Contact/Contact";
 import Error from "../pages/error/Error";
 import Success from "../pages/success/Success";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/success",
-        element: <Success />,
+        element: (
+          <ProtectedRoute>
+            <Success />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/*",
