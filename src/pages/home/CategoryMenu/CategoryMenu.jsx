@@ -1,29 +1,42 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../../redux/slices/CategorySlice";
+import FoodData from "../../../data/FoodData";
 
 const CategoryMenu = () => {
   const [categories, setCategories] = useState([]);
 
-  const [FoodData, setFoodData] = useState([]);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    fetch("../../../../public/FoodItems.json")
-      // fetch("FoodItems.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setFoodData(data);
-        listUniqueCategories(data);
-      });
-  }, []);
+  // const [FoodData, setFoodData] = useState([]);
+  // useEffect(() => {
+  //   fetch("../../../../public/FoodItems.json")
+  //     // fetch("FoodItems.json")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setFoodData(data);
+  //       listUniqueCategories(data);
+  //     });
+  // }, []);
 
-  const listUniqueCategories = (FoodData) => {
+  // const listUniqueCategories = (FoodData) => {
+  //   const uniqueCategories = [
+  //     ...new Set(FoodData.map((food) => food.category)),
+  //   ];
+  //   setCategories(uniqueCategories);
+  //   console.log(uniqueCategories);
+  // };
+
+  const listUniqueCategories = () => {
     const uniqueCategories = [
       ...new Set(FoodData.map((food) => food.category)),
     ];
     setCategories(uniqueCategories);
-    console.log(uniqueCategories);
   };
+
+  useEffect(() => {
+    listUniqueCategories();
+  }, []);
+
+  const dispatch = useDispatch();
 
   const selectedCategory = useSelector((state) => state.category.category);
 
